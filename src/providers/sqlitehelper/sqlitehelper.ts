@@ -16,7 +16,7 @@ export class SqlitehelperProvider {
         this.storage = new SQLite();
         this.storage.create({ name: "data.db", location: "default" }).then((db: SQLiteObject) => {
           this.db = db;
-          db.executeSql("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, fname TEXT, lname TEXT)", []);
+          db.executeSql("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, fname TEXT, lname TEXT, amount INTEGER)", []);
           this.isOpen = true;
         }).catch((error) => {
           console.log('create issues',error);
@@ -24,10 +24,10 @@ export class SqlitehelperProvider {
       }
    
   }
-  CreateUser(fname:string, lname:string){
+  CreateUser(fname:string, lname:string, amount:number){
     return new Promise ((resolve, reject) => {
-      let sql = "INSERT INTO users ( fname, lname) VALUES (?, ?)";
-      this.db.executeSql(sql, [fname, lname]).then((data) =>{
+      let sql = "INSERT INTO users ( fname, lname, amount) VALUES (?, ?, ?)";
+      this.db.executeSql(sql, [fname, lname, amount]).then((data) =>{
         resolve(data);
       }, (error) => {
         reject(error);
@@ -44,7 +44,8 @@ export class SqlitehelperProvider {
             arrayUsers.push({
               id: data.rows.item(i).id,
               fname: data.rows.item(i).fname,
-              lname: data.rows.item(i).lname
+              lname: data.rows.item(i).lname,
+              amount: data.rows.item(i).amount
             });            
           }          
         }
@@ -53,8 +54,6 @@ export class SqlitehelperProvider {
         reject(error);
       })
     })
-  }
-  DeleteUser(idUser){
   }
 
 }

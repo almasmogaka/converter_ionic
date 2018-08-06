@@ -1,65 +1,60 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Currency Converter
+      <h2 class="title1">Currency Converter</h2>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <div class="error" style="color: red; font-weight: bold;" *ngIf="error">Error: {{ this.error  }}</div>
   <ion-list>
 
-    <form [formGroup]="todo" (ngSubmit)="CreateUser()" validate>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-6>
-          <ion-input type="text" placeholder="FirstName"  formControlName="fname"></ion-input>
-        </ion-col>
-        <ion-col col-6>
-          <ion-input type="text" placeholder="LastName"  formControlName="lname"></ion-input>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    
-    <ion-item>
-      <ion-label fixed>Amount</ion-label>
-      <ion-input type="number" value="" placeholder="Amount To Be Converted"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>From</ion-label>
-      <ion-select>
-        <ion-option value="nes">NES</ion-option>
-        <ion-option value="n64">Nintendo64</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Into</ion-label>
-      <ion-select>
-        <ion-option value="nes">NES</ion-option>
-        <ion-option value="n64">Nintendo64</ion-option>
-      </ion-select>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label fixed>Converted:</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button color="primary" round block type="submit" >Convert</button>
-    </ion-item>
-  </form>
-  <button ion-button (click)="GetAllUser();"> Show List</button>
-  <ion-item-sliding *ngFor="let item of ListUser">
-    <ion-item>      
-      <h2>{{item.fname }} {{item.lname}}</h2>
-    </ion-item>
-    <ion-item-options side="right">
-      <button ion-button color="danger" (click)="DeleteUser(item.id)">
-        <ion-icon name="delete"></ion-icon>
-        Delete
-      </button>
-    </ion-item-options>
-  </ion-item-sliding>
-  
+    <form [formGroup]="todo" (ngSubmit)="CreateUser()" ngNativeValidate>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>FirstName</ion-label>
+              <ion-input type="text" formControlName="fname"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>LastName</ion-label>
+              <ion-input type="text" formControlName="lname"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item>
+        <ion-label fixed>Amount</ion-label>
+        <ion-input type="number" formControlName="amount"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="convert">From Currency:</ion-label>
+        <ion-select [ngModelOptions]="{standalone: true}" class="convert" id="fromCurrency" [(ngModel)]="fromCurrency" (ngModelChange)="convert()">
+          <ion-option *ngFor="let rate of rates" [value]="rate.id">{{rate.id}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>To Currency:</ion-label>
+        <ion-select [ngModelOptions]="{standalone: true}" id="toCurrency" [(ngModel)]="toCurrency" (ngModelChange)="convert()">
+          <ion-option *ngFor="let rate of rates" [value]="rate.id">rate.id</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="convert">
+        <ion-label fixed>Converted:</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <button class="convert" ion-button color="primary" round block type="submit">Convert</button>
+    </form>
+    <ion-item-sliding *ngFor="let item of ListUser">
+      <ion-item>
+        <h2>{{item.fname }} {{item.lname}} {{item.amount}}</h2>
+      </ion-item>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>
