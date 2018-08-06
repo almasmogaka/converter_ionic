@@ -1,14 +1,65 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Currency Converter
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+
+    <form [formGroup]="todo" (ngSubmit)="CreateUser()" validate>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-input type="text" placeholder="FirstName"  formControlName="fname"></ion-input>
+        </ion-col>
+        <ion-col col-6>
+          <ion-input type="text" placeholder="LastName"  formControlName="lname"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-item>
+      <ion-label fixed>Amount</ion-label>
+      <ion-input type="number" value="" placeholder="Amount To Be Converted"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>From</ion-label>
+      <ion-select>
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Into</ion-label>
+      <ion-select>
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label fixed>Converted:</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button color="primary" round block type="submit" >Convert</button>
+    </ion-item>
+  </form>
+  <button ion-button (click)="GetAllUser();"> Show List</button>
+  <ion-item-sliding *ngFor="let item of ListUser">
+    <ion-item>      
+      <h2>{{item.fname }} {{item.lname}}</h2>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="DeleteUser(item.id)">
+        <ion-icon name="delete"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+  
+  </ion-list>
 </ion-content>
