@@ -11,6 +11,7 @@ export class ReportPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private database: SqlitehelperProvider) {
+      this.GetAllUser();
   }
 
   ListUser: any;

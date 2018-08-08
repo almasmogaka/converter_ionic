@@ -48,6 +48,9 @@
         <ion-input type="number" [(ngModel)]="toAmount" formControlName="toAmount"></ion-input>
       </ion-item>
       <button class="convert" ion-button color="primary" round block type="submit">Convert</button>
+      <ion-item *ngFor="let item of ListUser">
+          {{item.fname}}
+        </ion-item>
     </ion-list>
   </form>
   <button ion-button color="primary" round (click)="reportPage()">

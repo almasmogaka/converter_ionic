@@ -11,19 +11,19 @@
   <ion-list>
       <ion-item-sliding *ngFor="let item of ListUser">
     <ion-item>
-      NAME: {{ item.fname }}" "{{ item.lname }}
+      NAME: <span>{{ item.fname }}-</span>{{ item.lname }}
     </ion-item>
     <ion-item>
       INPUT AMOUNT: {{ item.amount }}
     </ion-item>
     <ion-item>
-     CURRENCY: From {{ fromCurrency }} To {{ toCurrency }}
+     CURRENCY: From-<span>{{ item.fromCurrency }}-To-</span>{{ item.toCurrency }}
     </ion-item>
     <ion-item>
       CONVERTED AMOUNT: {{ item.toAmount }}
     </ion-item>
     <ion-item>
-        DATE OF THE TRANSACTION: {{item.myDate | date:"dd/MM/yy" }}
+        DATE : {{item.myDate | date:"dd/MM/yy" }}
       </ion-item>
       </ion-item-sliding>
   </ion-list><hr>

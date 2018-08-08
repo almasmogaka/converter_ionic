@@ -24,7 +24,7 @@ export class SqlitehelperProvider {
       }
    
   }
-  CreateUser(fname:string, lname:string, amount:number, fromCurrency: string, toCurrency: string, toAmount: string,  myDate: string){
+  CreateUser(fname:string, lname:string, amount:number, fromCurrency: string, toCurrency: string, toAmount: number, myDate: string){
     return new Promise ((resolve, reject) => {
       let sql = "INSERT INTO users ( fname, lname, amount, fromCurrency, toCurrency, toAmount, myDate) VALUES (?, ?, ?, ?, ?, ?, ?)";
       this.db.executeSql(sql, [fname, lname, amount, fromCurrency, toCurrency, toAmount, myDate]).then((data) =>{

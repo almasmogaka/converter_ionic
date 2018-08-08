@@ -34,9 +34,9 @@ export class HomePage {
       fname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
       lname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
       amount: ['', [Validators.required]],
-      fromCurrency: ['', [Validators.required]],
-      toCurrency: ['', [Validators.required]],
-      toAmount: ['', [Validators.required]],
+      fromCurrency: [''],
+      toCurrency: [''],
+      toAmount: [''],
       myDate: [new Date(), [Validators.required]]
     });
     this.convert();
