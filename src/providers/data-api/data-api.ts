@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators';
 export class DataApiProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello DataApiProvider Provider');
   }
   private apiKey = "0622e72efb6f80aafdf7dacb782fc243";
   private serverUrl = "http://data.fixer.io/api/";
@@ -16,7 +15,7 @@ export class DataApiProvider {
   getRates(): Observable<any> {
     const url = `${this.serverUrl}/latest`;    
     return this.http.get(url, { params: { access_key: this.apiKey } }).pipe(
-      map(res => {console.log('provider api service',res)}));
+      map(res => res));
   } 
 
 }

@@ -1,0 +1,30 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>report</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <h4 style="text-align: center" >ACTIVITY LOGS REPORT</h4>
+  <ion-list>
+      <ion-item-sliding *ngFor="let item of ListUser">
+    <ion-item>
+      NAME: {{ item.fname }}" "{{ item.lname }}
+    </ion-item>
+    <ion-item>
+      INPUT AMOUNT: {{ item.amount }}
+    </ion-item>
+    <ion-item>
+     CURRENCY: From {{ fromCurrency }} To {{ toCurrency }}
+    </ion-item>
+    <ion-item>
+      CONVERTED AMOUNT: {{ item.toAmount }}
+    </ion-item>
+    <ion-item>
+        DATE OF THE TRANSACTION: {{item.myDate | date:"dd/MM/yy" }}
+      </ion-item>
+      </ion-item-sliding>
+  </ion-list><hr>
+</ion-content>

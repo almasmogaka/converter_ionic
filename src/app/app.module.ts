@@ -11,11 +11,13 @@ import { DataApiProvider } from '../providers/data-api/data-api';
 import { SqlitehelperProvider } from '../providers/sqlitehelper/sqlitehelper';
 
 import { SQLite } from '@ionic-native/sqlite';
+import { ReportPage } from '../pages/report/report';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ReportPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { SQLite } from '@ionic-native/sqlite';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ReportPage
   ],
   providers: [
     StatusBar,
