@@ -47,14 +47,14 @@
         <ion-label fixed>Converted:</ion-label>
         <ion-input type="number" [(ngModel)]="toAmount" formControlName="toAmount"></ion-input>
       </ion-item>
-      <button class="convert" ion-button color="primary" round block type="submit">Convert</button>
-      <ion-item *ngFor="let item of ListUser">
-          {{item.fname}}
-        </ion-item>
+      <button class="convert" ion-button color="light" round block type="submit">save</button>
     </ion-list>
   </form>
-  <button ion-button color="primary" round (click)="reportPage()">
-      Show Report
-    </button>
+  <ion-fab top right edge>
+      <button ion-fab color="light" mini><ion-icon round name="arrow-dropdown"></ion-icon></button>
+      <ion-fab-list side="down">
+          <button ion-fab (click)="reportPage()"><ion-icon name="book"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
 </ion-content>
  

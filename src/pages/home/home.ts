@@ -34,9 +34,9 @@ export class HomePage {
       fname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
       lname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
       amount: ['', [Validators.required]],
-      fromCurrency: [''],
-      toCurrency: [''],
-      toAmount: [''],
+      fromCurrency: ['', [Validators.required]],
+      toCurrency: ['', [Validators.required]],
+      toAmount: ['', [Validators.required]],
       myDate: [new Date(), [Validators.required]]
     });
     this.convert();
@@ -57,7 +57,7 @@ export class HomePage {
         const items: Array<any> = this.parseData(response.rates);
         this.rates = items;
         this.fromRates = response.rates;
-
+      
         this.calculate();
       } else {
         this.error = 'Unable to get data from API';

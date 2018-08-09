@@ -10,7 +10,9 @@
   <h4 style="text-align: center" >ACTIVITY LOGS REPORT</h4>
   <ion-list>
       <ion-item-sliding *ngFor="let item of ListUser">
+        
     <ion-item>
+        <h4>...........******************.................</h4>
       NAME: <span>{{ item.fname }}-</span>{{ item.lname }}
     </ion-item>
     <ion-item>
@@ -23,7 +25,8 @@
       CONVERTED AMOUNT: {{ item.toAmount }}
     </ion-item>
     <ion-item>
-        DATE : {{item.myDate | date:"dd/MM/yy" }}
+        DATE : <u>{{item.myDate | date:"dd/MM/yy" }}</u>
+        <h4>******..............................************</h4>
       </ion-item>
       </ion-item-sliding>
   </ion-list><hr>
