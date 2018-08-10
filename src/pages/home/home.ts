@@ -11,7 +11,6 @@ import { ReportPage } from '../report/report';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
   error: any = null;
   amount: number =1;
   toAmount: any=0;
@@ -19,13 +18,10 @@ export class HomePage {
   toCurrency: string = null;
   rates: Array<any> = [];
   fromRates: Object = {};
-  myDate: any = new Date();
-  
-  
+  myDate: any = new Date();  
 
   //private ListUser : any;  
-  private todo: FormGroup;
-  
+  private todo: FormGroup;  
 
   constructor(public navCtrl: NavController, private database: SqlitehelperProvider, 
     private formBuilder: FormBuilder, public alertCtrl: AlertController, private data: DataApiProvider) {
